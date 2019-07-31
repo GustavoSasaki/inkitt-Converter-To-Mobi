@@ -1,7 +1,7 @@
 #### Instalation
 
-* Install python 3.6
-* Install pip from python3.6
+* Install [python3.6](https://www.python.org/downloads/)
+* Install [pip](https://pip.pypa.io/en/stable/installing/) from python3.6
 * Type in the terminal:
 > pip3 install beautifulsoup4.
 > pip3 install lxml
