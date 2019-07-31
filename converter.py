@@ -47,7 +47,7 @@ bookImage = Image.open(requests.get(ImageUrl, stream=True).raw)
 author = soup.find('meta',attrs={"name": "author"})
 author = author.attrs['content']
 
-path_to_kindlegen = os.getcwd()+"/KindleGen/kindlegen"
+path_to_kindlegen = os.getcwd()+"/kindlegen"
 mobiName=f"{bookTitle}{str(startChapter)}-{str(endChapter)}"
 path_to_book = os.getcwd()+"/books/"+mobiName
 

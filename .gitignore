@@ -1,4 +1,2 @@
-!books
-!KindleGen
-books/*
-KindleGen/*
+books/
+kindlegen
