@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<package xmlns="http://www.idpf.org/2007/opf" unique-identifier="uuid_id" version="2.0">
+    <metadata xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:opf="http://www.idpf.org/2007/opf">
+            <dc:Title>TITLEVARIABLE</dc:Title>
+            <dc:Language>LANGUAGEVARIABLE</dc:Language>
+            <dc:Creator>AUTHORVARIABLE</dc:Creator>
+    </metadata>
+    <manifest>
+    <item id="content" media-type="text/x-oeb1-document" href="bookHtml.html"></item>
+    </manifest>
+    <spine>
+    </spine>
+    <guide>
+        <reference href="cover.jpg" title="Cover" type="cover"/>
+    </guide>
+</package>
