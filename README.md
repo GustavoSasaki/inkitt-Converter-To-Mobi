@@ -4,7 +4,9 @@
 * Install [pip](https://pip.pypa.io/en/stable/installing/) from python3.6
 * Install the beautifulsoup4, lxml and requests library by typing in the terminal:
 > pip3 install beautifulsoup4.
+
 > pip3 install lxml
+
 > pip3 install requests
 * Download [KindleGen](https://www.amazon.com/gp/feature.html?docId=1000765211) and put the kindlegen executable into project main folder
 * And everything is done
