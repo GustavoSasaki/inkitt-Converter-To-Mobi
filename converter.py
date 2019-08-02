@@ -10,9 +10,10 @@ import shutil
 import collections
 
 #Inputs
-url = "https://www.inkitt.com/stories/fantasy/253103"
+url = "https://www.inkitt.com/stories/poetry/253054"
 startChapter=1
-endChapter=4
+endChapter=1
+hasSumary=True
 
 
 
@@ -51,9 +52,16 @@ path_to_kindlegen = os.getcwd()+"/kindlegen"
 mobiName=f"{bookTitle}{str(startChapter)}-{str(endChapter)}"
 path_to_book = os.getcwd()+"/books/"+mobiName
 
+
 #Getting the chapters
-chapter = collections.namedtuple("chapter", ["index","title","content"])
+chapter = collections.namedtuple("chapter", ["title","content"])
 chapters = []
+
+if(hasSumary):
+    headerSummary = soup.find("header",class_="story-header")
+    headerTitle = headerSummary.find("h2")
+    bookSumary= headerSummary.find("p",class_="story-summary")
+    chapters.append(chapter(title=headerTitle,content=bookSumary))
 
 for i in range(startChapter,endChapter+1):
     newUrl = bookLink+"/chapters/"+str(i)
@@ -62,10 +70,11 @@ for i in range(startChapter,endChapter+1):
     source = requests.get(newUrl).text
     soup = BeautifulSoup(source, 'lxml')
     chap =soup.find("article",id="story-text-container")
+
     chapTitle =chap.find("h2",class_="chapter-head-title")
     chapText =chap.div.div.find_all("p")
 
-    chapters.append(chapter(index=1,title=chapTitle,content=chapText))
+    chapters.append(chapter(title=chapTitle,content=chapText))
 
 
 
@@ -106,13 +115,14 @@ with open(os.getcwd()+"/base.html","r") as file:
 
     #wrinting index
     for index, chap in enumerate(chapters):
-        opfFile.write("<a href=\"#link"+str(index)+"\">"+ str(chap.title.text)+"</a><br>")
+        opfFile.write("<a href=\"#link"+str(index)+"\">"+ chap.title.text+"</a><br>")
     opfFile.write("<div class=\"mbp_pagebreak\"></div>")
 
+    
     #wrinting chapters
     for index, chap in enumerate(chapters):
         opfFile.write("<div id=\"link"+str(index)+"\">" )
-        opfFile.write( str(chap.title) )
+        opfFile.write( str(chap.title ))
         for j in chap.content:
             opfFile.write( str(j) )
         opfFile.write( "</div>")
